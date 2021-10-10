@@ -1,0 +1,105 @@
+using System;
+
+public class KaryawanKomisiDasarPlus
+{
+	public string NamaDepan;
+	public string NamaBelakang;
+	public string NoKTP;
+	private decimal PenjualKotor;
+	private decimal TarifKomisi;
+	private decimal GajiPokok;
+	
+	public KaryawanKomisiDasarPlus(string namaDepan, string namaBelakang, string noKTP, decimal penjualKotor, decimal tarifKomisi, decimal gajiPokok)
+	{
+		NamaDepan = namaDepan;
+		NamaBelakang = namaBelakang;
+		NoKTP = noKTP;
+		PenjualKotor = penjualKotor; 
+		TarifKomisi = tarifKomisi; 
+		GajiPokok = gajiPokok;
+	}
+	public void setNamaDepan(string namaDepan)
+        {
+            NamaDepan = namaDepan;
+        }
+        public string getNamaDepan()
+        {
+            return NamaDepan;
+        }
+        public void setNamaBelakang(string namaBelakang)
+        {
+            NamaBelakang = namaBelakang;
+        }
+        public string getNamaBelakang()
+        {
+            return NamaBelakang;
+        }
+        public void setNoKTP(string noKTP)
+        {
+            NoKTP = noKTP;
+        }
+        public string getNoKTP()
+        {
+            return NoKTP;
+        }
+	public decimal penjualKotor
+	{
+		get
+		{
+			return penjualKotor;
+		}
+		set
+		{
+			penjualKotor = (value < 0) ? 0 : value;
+		}
+	}
+	public decimal tarifKomisi
+	{
+		get
+		{
+			return tarifKomisi;
+		}
+		set
+		{
+			 tarifKomisi = (value > 0 && value < 1) ? value : 0;
+		}
+	}
+	public decimal gajiPokok
+	{
+		get
+		{
+			return gajiPokok;
+		}
+		set
+		{
+			gajiPokok = (value < 0) ? 0 : value;
+		}
+	}
+	public decimal Pendapatan()
+	{
+		return TarifKomisi * PenjualKotor;
+	}
+	public override string ToString()
+	{
+		return string.Format("Nama Depan : {0}, \nNama Belakang : {1}, \nNo KTP : {2}, \nPenjual Kotor : {3}, \nTarif Komisi : {4}, \nGajiPokok : {5}", NamaDepan, NamaBelakang, NoKTP, penjualKotor, tarifKomisi, gajiPokok);
+        }
+        static void Main(string[] args)
+        {
+			var karyawan = new KaryawanKomisiDasarPlus("Bob", "Lewis","333-33-3333", 5000.00M, .04M, 300.00M); 
+			
+			Console.WriteLine("Employee information obtained by properties and methods: \n");
+			Console.WriteLine("Nama Depan adalah {0}");
+			Console.WriteLine("Nama Belakang adalah {0}");
+			Console.WriteLine("No KTP adalah {0}");
+			Console.WriteLine("Penjual Kotor adalah{0:C}");
+			Console.WriteLine("Commission rate is {0:F2}");
+			Console.WriteLine("Pendapatan adalah {0:C}");
+			Console.WriteLine("Gaji Pokok adalah {0:C}");
+			
+			karyawan.gajiPokok = 1000.00M;
+			
+			Console.WriteLine("\n{0}:\n\n{1}", "Informasi terbaru karyawan diperoleh dari ToString", karyawan);
+            Console.WriteLine("karyawan : {0:C}", karyawan.Pendapatan());
+            Console.ReadLine();
+        }
+    }
