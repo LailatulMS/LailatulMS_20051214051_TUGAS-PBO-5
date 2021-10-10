@@ -1,0 +1,24 @@
+using System;
+
+class TesPolimorfisme
+{
+	static void Main()
+	{
+		var komisiKaryawan = new KomisiKaryawan("Sue", "Jones", "222-22-2222", 10000.00M, .06M);
+		
+		var basisKomisiKaryawanPlus = new BasisKomisiKaryawanPlus("Bob", "Lewis", "333-33-3333", 5000.00M, .04M, 300.00M); 
+		
+		Console.WriteLine("Panggil Karyawan Komisi ToString dan metode Penghasilan  " + "dengan referensi kelas dasar ke objek kelas dasar\n");
+		Console.WriteLine(komisiKaryawan.ToString());
+		Console.WriteLine("Penghasilan : {komisiKaryawan.Penghasilan()}\n");
+		Console.WriteLine("Panggil basis Karyawan Komisi Plus ToString dan" + " Metode penghasilan dengan referensi kelas turunan ke" + " objek kelas turunan\n");
+		Console.WriteLine("basisKomisiKaryawanPlus.ToString()");
+		Console.WriteLine("Penghasilan : {basisKaryawanKomisiPlus.Penghasilan()}\n");
+		
+		KomisiKaryawan komisiKaryawan2 = basisKomisiKaryawanPlus;
+		Console.WriteLine("Panggil Basis Karyawan Komisi ToString dan Penghasilan" + "metode dengan referensi kelas dasar ke objek kelas turunan");
+		Console.WriteLine("");
+		Console.WriteLine("");
+		Console.ReadLine();
+	}
+}
